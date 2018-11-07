@@ -26,10 +26,16 @@ void painel(){
 	printf("\n\n");
 }
 
+int contadorDeLinhas(char nomeArquivo[]);
+void alterarLinha(char novaLinha[], int linha, char nomeArquivo[]);
+
 int main(int argc, char const *argv[])
 {
 	system("clear");
 	FILE *file;
+
+	char arq[18] = "tables/Bruno.txt";
+	contadorDeLinhas(arq);
 	
 	painel();
 	char op[50];
@@ -58,13 +64,14 @@ int main(int argc, char const *argv[])
 			}
 			file = fopen(dir, "w");
 			for (int i = 0; i < qtdCampos; ++i){
-				fprintf(file, "%s %s\t", campo[i].tipoColuna, campo[i].nomeColuna);
+				fprintf(file, "%s %s\n", campo[i].tipoColuna, campo[i].nomeColuna);
 			}
 			if (file!=NULL){
-				
-				printf("Tabela criada com sucesso.\n");
-				fclose(file);
 				system("clear");
+				painel();
+				printf("Tabela criada com sucesso.\n\n");
+				fclose(file);
+
 			} else {
 				printf("Arquivo não encontrado.\n");
 				fclose(file);
@@ -88,4 +95,73 @@ int main(int argc, char const *argv[])
 	} while (!(strcmp(op, "sair")==0));
 	system("clear");
 	return 0;
+}
+
+
+/////////////////////////////////////////
+int contadorDeLinhas(char nomeArquivo[]){ //https://youtu.be/YMK0iyv3_YM
+	FILE *pArquivo;
+	pArquivo = fopen(nomeArquivo, "r");
+
+	char c;
+	int contador = 0;
+	if(pArquivo != NULL){
+		do{
+			c = fgetc(pArquivo);
+			if(c == '\n'){
+				contador++;
+			}
+		} while (c != EOF);
+		fclose(pArquivo);
+	} else {
+		exit(1);
+	}
+
+	return contador;
+}
+
+void alterarLinha(char novaLinha[], int linha, char nomeArquivo[]){
+
+	FILE *original, *alterado;
+	original = fopen(nomeArquivo, "r");
+
+	char nomeOriginal[100];
+	char nomeAlterado[100];
+	strcpy(nomeOriginal, nomeArquivo);
+	strcpy(nomeAlterado, nomeOriginal);
+	strcat(nomeAlterado, "alt");
+
+	alterado = fopen(nomeAlterado, "w");
+
+	char c;
+	int contador = 0;
+	if(original != NULL && alterado !=NULL){
+		do{
+			c = fgetc(original);
+
+			if(c == '\n'){
+				contador++;
+			}
+
+			if(contador != linha){
+				fputc(c, alterado);
+			}
+
+			if(contador == (linha-1)){
+				fputs(novaLinha, alterado);
+				contador++;
+			}
+
+		} while (!feof(original));
+		fclose(original);
+		fclose(alterado);
+	} else {
+		printf("Erro (alterar linha)\n");
+		exit(1);
+	}
+
+	strcat(nomeOriginal, ".txt");
+	rename(nomeArquivo, nomeOriginal);
+	rename(nomeAlterado, nomeArquivo);
+
 }
