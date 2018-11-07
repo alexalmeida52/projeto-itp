@@ -17,17 +17,21 @@ void ajuda(){
 	printf("\n\n");
 }
 
-int main(int argc, char const *argv[])
-{
-	system("clear");
-	FILE *file;
-	
+void painel(){
 	printf("Painel de comandos\n\n");
 	printf("\t1. createTable\t\t2. updateTable\n");
 	printf("\t3. selectTable\t\t4. deleteTable\n");
 	printf("\t5. help\t\t\t6. clear\n");
 	printf("\t7. read\t\t\t8. sair\n");
 	printf("\n\n");
+}
+
+int main(int argc, char const *argv[])
+{
+	system("clear");
+	FILE *file;
+	
+	painel();
 	char op[50];
 	char dir[8]= "tables/";
 	char ext[5] = ".txt";
@@ -79,6 +83,7 @@ int main(int argc, char const *argv[])
 				ajuda();
 		} else if(strcmp(op, "clear")==0){
 			system("clear");
+			painel();
 		}
 	} while (!(strcmp(op, "sair")==0));
 	system("clear");
