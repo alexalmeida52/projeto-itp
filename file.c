@@ -33,10 +33,6 @@ int main(int argc, char const *argv[])
 {
 	system("clear");
 	FILE *file;
-
-	char arq[18] = "tables/Bruno.txt";
-	contadorDeLinhas(arq);
-	
 	painel();
 	char op[50];
 	char dir[8]= "tables/";
