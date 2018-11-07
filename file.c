@@ -21,7 +21,7 @@ int main(int argc, char const *argv[])
 	printf("Painel de comandos\n\n");
 	printf("\t1. createTable\t\t2. updateTable\n");
 	printf("\t3. selectTable\t\t4. deleteTable\n");
-	printf("\t5. help\t\t6. clear\n");
+	printf("\t5. help\t\t\t6. clear\n");
 	printf("\t7. read\t\t\t8. sair\n");
 	printf("\n\n");
 	char op[50];
@@ -30,10 +30,10 @@ int main(int argc, char const *argv[])
 	char nome[50];
 	do{
 		printf("Digite uma opção: ");
-		gets(op);
+		scanf("%s", &op);
 		if (strcmp(op, "createTable")==0){
 			printf("Nome da tabela: ");
-			gets(nome);
+			scanf("%s", &nome);
 			strcat(nome, ext);
 			strcat(dir, nome);
 			printf("%s\n", dir);
