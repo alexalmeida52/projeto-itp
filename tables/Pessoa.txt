@@ -1,0 +1,1 @@
+char nome	int idade	int cpf	char telefone	char email	

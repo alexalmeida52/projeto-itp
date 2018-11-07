@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <dirent.h>
+struct coluna{
+	char tipoColuna[10];
+	char nomeColuna[10];
+};
 
 void ajuda(){
 	system("clear");
@@ -32,18 +36,34 @@ int main(int argc, char const *argv[])
 		printf("Digite uma opção: ");
 		scanf("%s", &op);
 		if (strcmp(op, "createTable")==0){
+			int qtdCampos;
+			struct coluna *campo;
 			printf("Nome da tabela: ");
 			scanf("%s", &nome);
 			strcat(nome, ext);
 			strcat(dir, nome);
 			printf("%s\n", dir);
+			printf("Quantos campos: ");
+			scanf("%d", &qtdCampos);
+			campo = malloc(sizeof(struct coluna)*qtdCampos);
+			for (int i = 0; i < qtdCampos; i++){
+				printf("Nome da coluna[%d]: ", i+1);
+				scanf("%s", &campo[i].nomeColuna);
+				printf("Tipo da coluna[%d]: ", i+1);
+				scanf("%s", &campo[i].tipoColuna);
+			}
 			file = fopen(dir, "w");
+			for (int i = 0; i < qtdCampos; ++i){
+				fprintf(file, "%s %s\t", campo[i].tipoColuna, campo[i].nomeColuna);
+			}
 			if (file!=NULL){
 				
 				printf("Tabela criada com sucesso.\n");
 				fclose(file);
+				system("clear");
 			} else {
 				printf("Arquivo não encontrado.\n");
+				fclose(file);
 			}
 			
 		} else if(strcmp(op, "selectTable")==0){
