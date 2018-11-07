@@ -27,7 +27,7 @@ void painel(){
 }
 
 int contadorDeLinhas(char nomeArquivo[]);
-void alterarLinha(char novaLinha[], int linha, char nomeArquivo[]);
+void alterarLinha(char novaFrase[], int linha, char nomeArquivo[]);
 
 int main(int argc, char const *argv[])
 {
@@ -116,48 +116,43 @@ int contadorDeLinhas(char nomeArquivo[]){ //https://youtu.be/YMK0iyv3_YM
 	return contador;
 }
 
-void alterarLinha(char novaLinha[], int linha, char nomeArquivo[]){
+void alterarLinha(char novaFrase[], int linha, char nomeArquivo[]){
+	FILE * fOriginal;
+    FILE * fTemporario;
 
-	FILE *original, *alterado;
-	original = fopen(nomeArquivo, "r");
+    char frase[1000];
+    int cont;
 
-	char nomeOriginal[100];
-	char nomeAlterado[100];
-	strcpy(nomeOriginal, nomeArquivo);
-	strcpy(nomeAlterado, nomeOriginal);
-	strcat(nomeAlterado, "alt");
+    fOriginal  = fopen(nomeArquivo, "r");
+    fTemporario = fopen("arquivo.tmp", "w");
 
-	alterado = fopen(nomeAlterado, "w");
+    if (fOriginal == NULL || fTemporario == NULL)
+    {
+        printf("Erro: função alterarLinha.\n");
+        exit(1);
+    }
 
-	char c;
-	int contador = 0;
-	if(original != NULL && alterado !=NULL){
-		do{
-			c = fgetc(original);
 
-			if(c == '\n'){
-				contador++;
-			}
+    cont = 0;
+    while ((fgets(frase, 1000, fOriginal)) != NULL)
+    {
+        cont++;
+        if (cont == linha){
+            fputs(novaFrase, fTemporario);
+            fputc('\n', fTemporario);
+        }
+        else{
+            fputs(frase, fTemporario);
+        }
+    }
 
-			if(contador != linha){
-				fputc(c, alterado);
-			}
+    fclose(fOriginal);
+    fclose(fTemporario);
 
-			if(contador == (linha-1)){
-				fputs(novaLinha, alterado);
-				contador++;
-			}
+    char nomeBackup[100];
+    strcpy(nomeBackup, nomeArquivo);
+    strcat(nomeBackup, ".backup");
 
-		} while (!feof(original));
-		fclose(original);
-		fclose(alterado);
-	} else {
-		printf("Erro (alterar linha)\n");
-		exit(1);
-	}
-
-	strcat(nomeOriginal, ".txt");
-	rename(nomeArquivo, nomeOriginal);
-	rename(nomeAlterado, nomeArquivo);
-
+    rename(nomeArquivo, nomeBackup);
+    rename("arquivo.tmp", nomeArquivo);
 }
