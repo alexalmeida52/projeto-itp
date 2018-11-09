@@ -1,0 +1,6 @@
+#ifndef CREATETABLE_H_INCLUDED
+#define CREATETABLE_H_INCLUDED
+
+void createTable();
+
+#endif // CREATETABLE_H_INCLUDED

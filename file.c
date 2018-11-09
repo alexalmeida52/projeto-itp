@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <dirent.h>
-#include <sys/stat.h>
-#include <sys/types.h>
 struct coluna{
 	char tipoColuna[10];
 	char nomeColuna[10];
@@ -40,16 +38,15 @@ int main(int argc, char const *argv[])
 	char dir[8]= "tables/";
 	char ext[5] = ".txt";
 	char nome[50];
-	char nomeArquivo[100];
 	do{
 		printf("Digite uma opção: ");
-		scanf("%s", &op);
+		scanf("%s", op);
 		if (strcmp(op, "createTable")==0){
 			int qtdCampos;
 			struct coluna *campo;
 			printf("Nome da tabela: ");
-			scanf("%s", &nome);
-			strcat(nome, "/");
+			scanf("%s", nome);
+			strcat(nome, ext);
 			strcat(dir, nome);
 			printf("%s\n", dir);
 			printf("Quantos campos: ");
@@ -57,23 +54,19 @@ int main(int argc, char const *argv[])
 			campo = malloc(sizeof(struct coluna)*qtdCampos);
 			for (int i = 0; i < qtdCampos; i++){
 				printf("Nome da coluna[%d]: ", i+1);
-				scanf("%s", &campo[i].nomeColuna);
+				scanf("%s", campo[i].nomeColuna);
 				printf("Tipo da coluna[%d]: ", i+1);
-				scanf("%s", &campo[i].tipoColuna);
+				scanf("%s", campo[i].tipoColuna);
 			}
+			file = fopen(dir, "w");
 			for (int i = 0; i < qtdCampos; ++i){
-				strcat(campo[i].nomeColuna, ext);
-				strcpy(nomeArquivo, dir);
-				mkdir(dir, 0777);
-				strcat(nomeArquivo, campo[i].nomeColuna);
-				file = fopen(nomeArquivo, "w");
 				fprintf(file, "%s %s\n", campo[i].tipoColuna, campo[i].nomeColuna);
-				fclose(file);
 			}
 			if (file!=NULL){
 				system("clear");
 				painel();
 				printf("Tabela criada com sucesso.\n\n");
+				fclose(file);
 
 			} else {
 				printf("Arquivo não encontrado.\n");
@@ -150,7 +143,7 @@ void alterarLinha(char novaFrase[], int linha, char nomeArquivo[]){
         }
         else{
             fputs(frase, fTemporario);
-        }
+}
     }
 
     fclose(fOriginal);
