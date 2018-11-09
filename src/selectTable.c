@@ -8,7 +8,13 @@ void selectTable(){
     dir = opendir("tables/");
     struct dirent *lsdir;
     while( (lsdir = readdir(dir)) != NULL){
-        printf("%s\n", lsdir->d_name);
+
+
+    	if((strcmp(lsdir->d_name, "..")==0)  || (strcmp(lsdir->d_name, ".")==0)){
+
+    	} else {
+            printf("%s\n", lsdir->d_name);
+    	}
     }
     printf("\n");
 

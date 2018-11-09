@@ -19,7 +19,7 @@ int main(int argc, char const *argv[])
 	do{
 		printf("Digite uma opção: ");
 		scanf("%s", op);
-		if (strcmp(op, "createTable")==0){
+		if (strcmp(op, "createTable")==0 || strcmp(op, "1")==0){
 			createTable();
 		} else if(strcmp(op, "selectTable")==0){
 			selectTable();
