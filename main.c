@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <dirent.h>
-#include "include/createTable.h"
-#include "include/selectTable.h"
-#include "include/help.h"
-#include "include/panel.h"
+#include "createTable.h"
+#include "selectTable.h"
+#include "help.h"
+#include "panel.h"
 
 int contadorDeLinhas(char nomeArquivo[]);
 void alterarLinha(char novaFrase[], int linha, char nomeArquivo[]);

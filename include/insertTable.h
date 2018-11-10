@@ -1,0 +1,6 @@
+#ifndef INSERTTABLE_H_INCLUDED
+#define INSERTTABLE_H_INCLUDED
+
+void insertTable();
+
+#endif // INSERTTABLE_H_INCLUDED

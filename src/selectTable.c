@@ -1,6 +1,8 @@
-#include "../include/createTable.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <dirent.h>
+#include "selectTable.h"
 
 void selectTable(){
 

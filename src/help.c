@@ -1,4 +1,7 @@
-#include "../include/help.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "help.h"
+
 
 void help(){
 	system("clear");

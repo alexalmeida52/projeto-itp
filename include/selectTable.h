@@ -1,6 +1,6 @@
 #ifndef SELECTTABLE_H_INCLUDED
 #define SELECTTABLE_H_INCLUDED
 
-void createTable();
+void selectTable();
 
 #endif // SELECTTABLE_H_INCLUDED

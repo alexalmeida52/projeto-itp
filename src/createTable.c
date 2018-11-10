@@ -1,5 +1,8 @@
-#include "../include/createTable.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "createTable.h"
+#include "panel.h"
 
 struct coluna{
 	char tipoColuna[10];
@@ -58,27 +61,3 @@ void createTable(){
 
 }
 
-
-/*    void insertTable(){ //insere nova linha
-
-        char tabela[50];
-        printf("Insira o nome da tabela: ");
-        scanf("%s", &tabela);
-
-        DIR *dir;
-        dir = opendir("tables/");
-        struct dirent *lsdir;
-        while( (lsdir = readdir(dir)) != NULL){
-
-        	if((strcmp(lsdir->d_name, tabela)==0)){
-
-
-
-        	} else {
-                printf("Erro. Tabela não existe. Tente novamente.\n");
-        	}
-        }
-        printf("\n");
-
-    }
-*/

@@ -1,4 +1,5 @@
-#include "../include/panel.h"
+#include <stdio.h>
+#include "panel.h"
 
 void panel(){
 	printf("Painel de comandos\n\n");
