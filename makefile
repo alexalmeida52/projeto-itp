@@ -3,6 +3,7 @@ all:
 	gcc -c ./src/help.c -I ./include -o ./obj/help.o
 	gcc -c ./src/selectTable.c -I ./include -o ./obj/selectTable.o
 	gcc -c ./src/createTable.c -I ./include -o ./obj/createTable.o
+	gcc -c ./src/deleteTable.c -I ./include -o ./obj/deleteTable.o
 
 	gcc ./main.c ./obj/*.o -I ./include -o ./main
 

@@ -6,6 +6,7 @@
 #include "selectTable.h"
 #include "help.h"
 #include "panel.h"
+#include "deleteTable.h"
 
 int contadorDeLinhas(char nomeArquivo[]);
 void alterarLinha(char novaFrase[], int linha, char nomeArquivo[]);
@@ -25,6 +26,8 @@ int main(int argc, char const *argv[])
 			selectTable();
 		} else if(strcmp(op, "help")==0 || strcmp(op, "5")==0){
             help();
+		} else if(strcmp(op, "deleteTable")==0 || strcmp(op, "4")==0){
+			deleteTable();
 		} else if(strcmp(op, "clear")==0 || strcmp(op, "6")==0){
 			system("clear");
 			panel();

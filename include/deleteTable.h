@@ -1,0 +1,6 @@
+#ifndef DELETETABLE_H_INCLUDED
+#define DELETETABLE_H_INCLUDED
+
+void deleteTable();
+
+#endif // DELETETABLE_H_INCLUDED
