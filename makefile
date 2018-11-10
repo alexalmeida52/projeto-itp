@@ -7,8 +7,6 @@ all:
 	gcc ./main.c ./obj/*.o -I ./include -o ./main
 
 run:
-	rm ./obj/*.o
-	rm ./main
 	./main
 
 clear:
