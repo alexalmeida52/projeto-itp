@@ -21,11 +21,11 @@ int main(int argc, char const *argv[])
 		scanf("%s", op);
 		if (strcmp(op, "createTable")==0 || strcmp(op, "1")==0){
 			createTable();
-		} else if(strcmp(op, "selectTable")==0){
+		} else if(strcmp(op, "selectTable")==0 || strcmp(op, "3")==0){
 			selectTable();
-		} else if(strcmp(op, "help")==0){
-				help();
-		} else if(strcmp(op, "clear")==0){
+		} else if(strcmp(op, "help")==0 || strcmp(op, "5")==0){
+            help();
+		} else if(strcmp(op, "clear")==0 || strcmp(op, "6")==0){
 			system("clear");
 			panel();
 		}
