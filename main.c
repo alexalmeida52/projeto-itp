@@ -2,14 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include <dirent.h>
+#include "operaBin.h"
 #include "createTable.h"
 #include "selectTable.h"
 #include "help.h"
 #include "panel.h"
 #include "deleteTable.h"
 
-int contadorDeLinhas(char nomeArquivo[]);
-void alterarLinha(char novaFrase[], int linha, char nomeArquivo[]);
 
 int main(int argc, char const *argv[])
 {
@@ -32,71 +31,7 @@ int main(int argc, char const *argv[])
 			system("clear");
 			panel();
 		}
-	} while (!(strcmp(op, "sair")==0));
+	} while (!(strcmp(op, "sair")==0 || strcmp(op, "8")==0));
 	system("clear");
 	return 0;
-}
-
-
-/////////////////////////////////////////
-int contadorDeLinhas(char nomeArquivo[]){ //https://youtu.be/YMK0iyv3_YM
-	FILE *pArquivo;
-	pArquivo = fopen(nomeArquivo, "r");
-
-	char c;
-	int contador = 0;
-	if(pArquivo != NULL){
-		do{
-			c = fgetc(pArquivo);
-			if(c == '\n'){
-				contador++;
-			}
-		} while (c != EOF);
-		fclose(pArquivo);
-	} else {
-		exit(1);
-	}
-
-	return contador;
-}
-
-void alterarLinha(char novaFrase[], int linha, char nomeArquivo[]){
-	FILE * fOriginal;
-    FILE * fTemporario;
-
-    char frase[1000];
-    int cont;
-
-    fOriginal  = fopen(nomeArquivo, "r");
-    fTemporario = fopen("arquivo.tmp", "w");
-
-    if (fOriginal == NULL || fTemporario == NULL)
-    {
-        printf("Erro: função alterarLinha.\n");
-        exit(1);
-    }
-
-
-    cont = 0;
-    while ((fgets(frase, 1000, fOriginal)) != NULL)
-    {
-        cont++;
-        if (cont == linha){
-            fputs(novaFrase, fTemporario);
-            fputc('\n', fTemporario);
-        }
-        else{
-            fputs(frase, fTemporario);
-}
-    }
-
-    fclose(fOriginal);
-    fclose(fTemporario);
-
-    char nomeBackup[100];
-    strcpy(nomeBackup, nomeArquivo);
-    strcat(nomeBackup, ".backup");
-
-    rename(nomeArquivo, nomeBackup);
-    rename("arquivo.tmp", nomeArquivo);
 }
