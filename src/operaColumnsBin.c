@@ -1,7 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "operaBin.h"
+#include "operaColumnsBin.h"
+
+char NOME[100];
+char DIR_COL[100] = "bin/colunas/";
+char EXT_COL[5] = ".bin";
 
 typedef struct tcoluna{
 	char tipoColuna[10];
@@ -9,13 +13,11 @@ typedef struct tcoluna{
 } coluna;
 
 void createTableBin(char *tabela, int qtdCampos, coluna *campo){
-	char nome[100];
-	char ext[100] = ".bin";
-	strcpy(nome, tabela);
-	strcat(nome, ext);
+	strcpy(NOME, tabela);
+	strcat(DIR_COL, NOME);
+	strcat(DIR_COL, EXT_COL);
 	FILE *arq;
-	arq=fopen(nome,"wb");
-
+	arq=fopen(DIR_COL,"wb");
 	if(arq != NULL){
 		for(int i = 0; i < qtdCampos; i++)
 			fwrite(&campo[i], sizeof(coluna), 1, arq);
@@ -28,11 +30,11 @@ void createTableBin(char *tabela, int qtdCampos, coluna *campo){
 }
 
 void readTableBin(char *tabela, coluna *aux_campos){
-	char nome[100];
-	char ext[100] = ".bin";
-	strcpy(nome, tabela);
-	strcat(nome, ext);
-	FILE * arq = fopen(nome, "rb");
+	strcpy(NOME, tabela);
+	strcat(DIR_COL, NOME);
+	strcat(DIR_COL, EXT_COL);
+	FILE *arq;
+	arq=fopen(DIR_COL,"rb");
 	if(arq != NULL)
 	{
 		int indice = 0;
@@ -54,11 +56,11 @@ void readTableBin(char *tabela, coluna *aux_campos){
 }
 
 void printTableBin(char *tabela){
-	char nome[100];
-	char ext[100] = ".bin";
-	strcpy(nome, tabela);
-	strcat(nome, ext);
-	FILE * arq = fopen(nome, "rb");
+	strcpy(NOME, tabela);
+	strcat(DIR_COL, NOME);
+	strcat(DIR_COL, EXT_COL);
+	FILE *arq;
+	arq=fopen(DIR_COL,"rb");
 	if(arq != NULL)
 	{
 		while(1){
@@ -67,7 +69,7 @@ void printTableBin(char *tabela){
 			if(r < 1)
 				break;
 			else
-				printf("%s %s\t\t", p.tipoColuna, p.nomeColuna);
+				printf("%s %s\t", p.tipoColuna, p.nomeColuna);
 		}
 		fclose(arq); // fecha o arquivo
 	}
@@ -79,10 +81,11 @@ void printTableBin(char *tabela){
 
 
 int lengthTableBin(char *tabela){
-	char nome[100];
-	char ext[100] = ".bin";
-	strcpy(nome, tabela);
-	strcat(nome, ext);
+	strcpy(NOME, tabela);
+	strcat(DIR_COL, NOME);
+	strcat(DIR_COL, EXT_COL);
+	FILE *arq;
+	arq=fopen(DIR_COL,"rb");
 	FILE * arq = fopen(nome, "rb");
 	if(arq != NULL)
 	{

@@ -2,12 +2,15 @@
 #include <stdlib.h>
 #include <string.h>
 #include <dirent.h>
-#include "operaBin.h"
+#include "operaColumnsBin.h"
+#include "operaCellsBin.h"
+#include "operaLinesBin.h"
 #include "createTable.h"
 #include "selectTable.h"
 #include "help.h"
 #include "panel.h"
 #include "deleteTable.h"
+#include "insertTable.h"
 
 
 int main(int argc, char const *argv[])
@@ -23,8 +26,9 @@ int main(int argc, char const *argv[])
 			createTable();
 		} else if(strcmp(op, "selectTable")==0 || strcmp(op, "3")==0){
 			selectTable();
+			insertTable();
 		} else if(strcmp(op, "help")==0 || strcmp(op, "5")==0){
-            help();
+			help();
 		} else if(strcmp(op, "deleteTable")==0 || strcmp(op, "4")==0){
 			deleteTable();
 		} else if(strcmp(op, "clear")==0 || strcmp(op, "6")==0){
