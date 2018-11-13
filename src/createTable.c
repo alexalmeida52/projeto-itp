@@ -55,7 +55,7 @@ void createTable(){
 		printf("Error. Digite um valor inteiro.\n");
 	}
 
-	printf("%s\n", dir);
-	createTableBin(dir, qtdCampos, campo);
+	printf("%s\n", nome);
+	createColumnsBin(nome, qtdCampos, campo);
 }
 

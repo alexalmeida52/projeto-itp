@@ -12,7 +12,8 @@ typedef struct tcoluna{
 	char nomeColuna[10];
 } coluna;
 
-void createTableBin(char *tabela, int qtdCampos, coluna *campo){
+void createColumnsBin(char *tabela, int qtdCampos, coluna *campo){
+	printf("Inicio createColumnsBin %s \n", tabela);
 	strcpy(NOME, tabela);
 	strcat(DIR_COL, NOME);
 	strcat(DIR_COL, EXT_COL);
@@ -24,12 +25,12 @@ void createTableBin(char *tabela, int qtdCampos, coluna *campo){
 		fclose(arq);
 	}
 	else{
-		printf("\ncreateTableBin: Erro ao abrir o arquivo para leitura!\n");
+		printf("\ncreateColumnsBin: Erro ao abrir o arquivo para leitura!\n");
 		exit(1);
 	}
 }
 
-void readTableBin(char *tabela, coluna *aux_campos){
+void readColumnsBin(char *tabela, coluna *aux_campos){
 	strcpy(NOME, tabela);
 	strcat(DIR_COL, NOME);
 	strcat(DIR_COL, EXT_COL);
@@ -49,13 +50,13 @@ void readTableBin(char *tabela, coluna *aux_campos){
 		fclose(arq); // fecha o arquivo
 	}
 	else{
-		printf("\nreadTableBin: Erro ao abrir o arquivo para leitura!\n");
+		printf("\nreadColumnsBin: Erro ao abrir o arquivo para leitura!\n");
 		exit(1); // aborta o programa
 	}
 
 }
 
-void printTableBin(char *tabela){
+void printColumnsBin(char *tabela){
 	strcpy(NOME, tabela);
 	strcat(DIR_COL, NOME);
 	strcat(DIR_COL, EXT_COL);
@@ -74,19 +75,18 @@ void printTableBin(char *tabela){
 		fclose(arq); // fecha o arquivo
 	}
 	else{
-		printf("\nprintTableBin: Erro ao abrir o arquivo para leitura!\n");
+		printf("\nprintColumnsBin: Erro ao abrir o arquivo para leitura!\n");
 		exit(1); // aborta o programa
 	}
 }
 
 
-int lengthTableBin(char *tabela){
+int lengthColumnsBin(char *tabela){
 	strcpy(NOME, tabela);
 	strcat(DIR_COL, NOME);
 	strcat(DIR_COL, EXT_COL);
 	FILE *arq;
 	arq=fopen(DIR_COL,"rb");
-	FILE * arq = fopen(nome, "rb");
 	if(arq != NULL)
 	{
 		int indice = 0;
@@ -102,7 +102,7 @@ int lengthTableBin(char *tabela){
 		return indice;
 	}
 	else{
-		printf("\nlengthTableBin: Erro ao abrir o arquivo para leitura!\n");
+		printf("\nlengthColumnsBin: Erro ao abrir o arquivo para leitura!\n");
 		exit(1); // aborta o programa
 	}
 }

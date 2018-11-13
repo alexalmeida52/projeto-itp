@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "operaCelulasBin.h"
+#include "operaCellsBin.h"
 
 char NOME[100];
 char DIR_CEL[100] = "bin/celulas/";

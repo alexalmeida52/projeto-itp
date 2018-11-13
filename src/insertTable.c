@@ -17,7 +17,7 @@ typedef struct tcelula{
 } celula;
 
 typedef struct tlinha{
-    celula camposCelula[10]
+    celula camposCelula[10];
 } linha;
 
 void insertTable(){ //insere nova linha
@@ -26,9 +26,9 @@ void insertTable(){ //insere nova linha
     scanf("%s", &tabela);
     char dir[50] = "tables/";
     strcat(dir, tabela);
-    int qtdColunas = lengthTableBin(dir);
+    int qtdColunas = lengthColumnsBin(dir);
     coluna aux_colunas[qtdColunas];
-    readTableBin(dir, aux_colunas);
+    readColumnsBin(dir, aux_colunas);
     
     for(int i = 0; i < qtdColunas; i++){
         printf("%s %s\t", aux_colunas[i].tipoColuna, aux_colunas[i].nomeColuna);
@@ -36,7 +36,6 @@ void insertTable(){ //insere nova linha
 
     int valorCelulaInt;
     char valorCelulaString[50];
-
     for(int i = 0; i < qtdColunas; i++){
         printf("Insira %s:", aux_colunas[i].nomeColuna);
         do{
@@ -52,9 +51,9 @@ void insertTable(){ //insere nova linha
                         continue;
                     }
                 }
-            } else if(strcmp(aux_colunas[i].tipoColuna, "char")==0){
+            } /*else if(strcmp(aux_colunas[i].tipoColuna, "char")==0){
                 while(1){
-                    scanf("%d", valorCelulaInt);
+                    scanf("%s", valorCelulaString);
                     if((char)valorCelulaString){
 
                         break;
@@ -64,8 +63,8 @@ void insertTable(){ //insere nova linha
                     }
                 }
             }
-
-        } while();
+*/
+        } while(1);
 
 
 

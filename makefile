@@ -1,7 +1,7 @@
 all:
 	gcc -c ./src/panel.c -I ./include -o ./obj/panel.o
 	gcc -c ./src/help.c -I ./include -o ./obj/help.o
-	gcc -c ./src/operaBin.c -I ./include -o ./obj/operaBin.o
+	gcc -c ./src/operaColumnsBin.c -I ./include -o ./obj/operaColumnsBin.o
 	gcc -c ./src/operaCellsBin.c -I ./include -o ./obj/operaCellsBin.o
 	gcc -c ./src/operaLinesBin.c -I ./include -o ./obj/operaLinesBin.o
 	gcc -c ./src/selectTable.c -I ./include -o ./obj/selectTable.o

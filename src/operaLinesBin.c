@@ -13,7 +13,7 @@ typedef struct tcelula{
 } celula;
 
 typedef struct tlinha{
-	celula camposCelula[10]
+	celula camposCelula[10];
 } linha;
 
 void createLinesBin(char *tabela, int qtdCampos, linha *campo){
@@ -59,7 +59,7 @@ void readLinesBin(char *tabela, linha *aux_campos){
 	}
 
 }
-
+/*
 void printLinesBin(char *tabela){
 	strcpy(NOME, tabela);
 	strcat(DIR_LIN, NOME);
@@ -82,7 +82,7 @@ void printLinesBin(char *tabela){
 		printf("\nprintTableBin: Erro ao abrir o arquivo para leitura!\n");
 		exit(1);
 	}
-}
+}*/
 
 
 int lengthLinesBin(char *tabela){
