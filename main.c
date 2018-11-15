@@ -25,6 +25,7 @@ int main(int argc, char const *argv[])
 		if (strcmp(op, "createTable")==0 || strcmp(op, "1")==0){
 			createTable();
 		} else if(strcmp(op, "selectTable")==0 || strcmp(op, "3")==0){
+			system("clear");
 			selectTable();
 			insertTable();
 		} else if(strcmp(op, "help")==0 || strcmp(op, "5")==0){

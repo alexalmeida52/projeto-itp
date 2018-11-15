@@ -13,6 +13,7 @@ typedef struct tcoluna{
 } coluna;
 
 void createColumnsBin(char *tabela, int qtdCampos, coluna *campo){
+	strcpy(DIR_COL, "bin/colunas/");//correção para a variável global possuir o caminho correto nesta função.
 	printf("Inicio createColumnsBin %s \n", tabela);
 	strcpy(NOME, tabela);
 	strcat(DIR_COL, NOME);
@@ -25,21 +26,25 @@ void createColumnsBin(char *tabela, int qtdCampos, coluna *campo){
 		fclose(arq);
 	}
 	else{
-		printf("\ncreateColumnsBin: Erro ao abrir o arquivo para leitura!\n");
+		printf("\ncreateColumnsBin: Erro ao abrir o arquivo para escrita!\n");
 		exit(1);
 	}
 }
 
 void readColumnsBin(char *tabela, coluna *aux_campos){
+	strcpy(DIR_COL, "bin/colunas/");//correção para a variável global possuir o caminho correto nesta função.
 	strcpy(NOME, tabela);
 	strcat(DIR_COL, NOME);
 	strcat(DIR_COL, EXT_COL);
+	
 	FILE *arq;
 	arq=fopen(DIR_COL,"rb");
 	if(arq != NULL)
-	{
+	{	
+		
 		int indice = 0;
 		while(1){
+			
 			coluna p;
 			size_t r = fread(&p, sizeof(coluna), 1, arq);
 			if(r < 1)
@@ -57,6 +62,7 @@ void readColumnsBin(char *tabela, coluna *aux_campos){
 }
 
 void printColumnsBin(char *tabela){
+	strcpy(DIR_COL, "bin/colunas/");//correção para a variável global possuir o caminho correto nesta função.
 	strcpy(NOME, tabela);
 	strcat(DIR_COL, NOME);
 	strcat(DIR_COL, EXT_COL);
@@ -82,6 +88,7 @@ void printColumnsBin(char *tabela){
 
 
 int lengthColumnsBin(char *tabela){
+	strcpy(DIR_COL, "bin/colunas/");//correção para a variável global possuir o caminho correto nesta função.
 	strcpy(NOME, tabela);
 	strcat(DIR_COL, NOME);
 	strcat(DIR_COL, EXT_COL);
@@ -89,8 +96,10 @@ int lengthColumnsBin(char *tabela){
 	arq=fopen(DIR_COL,"rb");
 	if(arq != NULL)
 	{
+		
 		int indice = 0;
 		while(1){
+			
 			coluna p;
 			size_t r = fread(&p, sizeof(coluna), 1, arq);
 			if(r < 1)
