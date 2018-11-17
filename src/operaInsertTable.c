@@ -10,25 +10,24 @@ typedef struct tcoluna{
 } coluna;
 
 typedef struct tcelula{
-    char nomeColuna[10];
     char valorCelula[50];
 } celula;
 
 typedef struct tlinha{
-    celula camposCelula[10];
+    celula vetorCelula[10];
 } linha;
 
 	
 /*Verifica se o valor informado é inteiro e se já existe na tabela.
 Caso exista, pede para o usuario informar o valor novamente até que
 seja válido para inserção.*/
-int verificaChavePrimaria(char *valorCelulaString, coluna *aux_colunas, int i){
+char * verificaChavePrimaria(char *valorCelulaString, coluna *aux_colunas, int i){
     
     char op1;
     char valorString[50];
 
     if (atoi(valorCelulaString)){ // Verifica se tem existe letra, se sim, o atoi retorna 0
-        return atoi(valorCelulaString);
+        return valorCelulaString;
         // verificar se PK já existe
         
     } else {
@@ -39,8 +38,10 @@ int verificaChavePrimaria(char *valorCelulaString, coluna *aux_colunas, int i){
             printf("\nInsira novamente o %s: ", aux_colunas[i].nomeColuna);
             scanf("%s", &valorString);
             return verificaChavePrimaria(valorString, aux_colunas, i);
+        	
         } else {
-        	return 0;
+        	strcpy(valorCelulaString, "0");
+        	return valorCelulaString;
         }
     }
 }
@@ -49,13 +50,13 @@ int verificaChavePrimaria(char *valorCelulaString, coluna *aux_colunas, int i){
 /*Verifica se o valor informado é inteiro e se já existe na tabela.
 Caso exista, pede para o usuario informar o valor novamente até que
 seja válido para inserção.*/
-int verificaInt(char *valorCelulaString, coluna *aux_colunas, int i){
+char * verificaInt(char *valorCelulaString, coluna *aux_colunas, int i){
     
     char op1;
     char valorString[50];
 
     if (atoi(valorCelulaString)){ // Verifica se tem existe letra, se sim, o atoi retorna 0
-        return atoi(valorCelulaString);
+        return valorCelulaString;
     } else {
         printf("\nErro. Você está inserindo um valor que não é INTEIRO ou que é NULO(zero).\n");
         printf("Você deseja inserir outro valor na coluna %s que não seja nulo(zero)?(s/n) ", aux_colunas[i].nomeColuna);
@@ -65,7 +66,8 @@ int verificaInt(char *valorCelulaString, coluna *aux_colunas, int i){
             scanf("%s", &valorString);
             return verificaInt(valorString, aux_colunas, i);
         } else {
-            return 0;
+        	strcpy(valorCelulaString, "0");
+        	return valorCelulaString;
         }
     }
 }
@@ -122,10 +124,14 @@ double verificaDouble(char *valorCelulaString, coluna *aux_colunas, int i){
     }
 }
 
-void panelInsertTable(char *tabela, coluna *aux_colunas){
+void panelInsertTable(char *tabela, coluna *aux_colunas, int qtdColunas, linha aux_linha){
 	system("clear");
 	printf("Tabela selionada: %s\n\n", tabela);
 	printf("Colunas:\n");
 	printColumnsBin(tabela);
+	printf("\n");
+	for (int i = 0; i < qtdColunas; i++){
+		printf("%s\t", aux_linha.vetorCelula[i].valorCelula);
+	}
 	printf("\n\n\n");
 }

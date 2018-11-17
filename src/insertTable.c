@@ -14,12 +14,11 @@ typedef struct tcoluna{
 } coluna;
 
 typedef struct tcelula{
-	char nomeColuna[10];
 	char valorCelula[50];
 } celula;
 
 typedef struct tlinha{
-	celula camposCelula[10];
+	celula vetorCelula[10];
 } linha;
 
 void insertTable(){ //insere nova linha
@@ -33,23 +32,35 @@ void insertTable(){ //insere nova linha
 
 	coluna aux_colunas[qtdColunas];
 	readColumnsBin(tabela, aux_colunas);
+
+
+	linha aux_linha;
+
+	for(int i=0; i<10; i++){
+		strcpy(aux_linha.vetorCelula[i].valorCelula, ""); //inicia todos as celulas da linha com vazio
+	}
 	
-	int celulaDaTabela;
+	int celulaInt, celulaDaTabela;
 	char valorCelulaString[50];
 	
 	for(int i = 0; i < qtdColunas; i++){
 
-		panelInsertTable(tabela, aux_colunas);
+		panelInsertTable(tabela, aux_colunas, qtdColunas, aux_linha);
 		printf("Insira o %s: ", aux_colunas[i].nomeColuna);
 
 		if (strcmp(aux_colunas[i].tipoColuna, "int(PK)")==0){
 			scanf("%s", &valorCelulaString);
-			celulaDaTabela = verificaChavePrimaria(valorCelulaString, aux_colunas, i);
+			strcpy(
+				aux_linha.vetorCelula[i].valorCelula,
+				verificaChavePrimaria(valorCelulaString, aux_colunas, i)
+			);
 
 		} else if(strcmp(aux_colunas[i].tipoColuna, "int")==0){
 			scanf("%s", &valorCelulaString);
-			celulaDaTabela = verificaInt(valorCelulaString, aux_colunas, i);			
-
+			strcpy(
+				aux_linha.vetorCelula[i].valorCelula,
+				verificaInt(valorCelulaString, aux_colunas, i)
+			);
 		} else if(strcmp(aux_colunas[i].tipoColuna, "float")==0){
 			scanf("%s", &valorCelulaString);
 			celulaDaTabela = verificaFloat(valorCelulaString, aux_colunas, i);
@@ -67,7 +78,11 @@ void insertTable(){ //insere nova linha
 
 	}
 
+
+
 	printf("\nDados inseridos com súcesso na tabela %s.\n", tabela);
+	printf("Valor id:::: %s\n", aux_linha.vetorCelula[0].valorCelula);
+
 
 
 

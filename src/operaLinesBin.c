@@ -16,12 +16,14 @@ typedef struct tlinha{
 	celula camposCelula[10];
 } linha;
 
-void createLinesBin(char *tabela, int qtdCampos, linha *campo){
+void createLinesBin(char *tabela, int qtdCampos, linha *campo){	
+	char dir[100];
+	strcpy(dir, DIR_LIN);
 	strcpy(NOME, tabela);
-	strcat(DIR_LIN, NOME);
-	strcat(DIR_LIN, EXT_LIN);
+	strcat(dir, NOME);
+	strcat(dir, EXT_LIN);
 	FILE *arq;
-	arq=fopen(DIR_LIN,"wb");
+	arq=fopen(dir,"wb");
 
 	if(arq != NULL){
 		for(int i = 0; i < qtdCampos; i++)
@@ -35,11 +37,13 @@ void createLinesBin(char *tabela, int qtdCampos, linha *campo){
 }
 
 void readLinesBin(char *tabela, linha *aux_campos){
+	char dir[100];
+	strcpy(dir, DIR_LIN);
 	strcpy(NOME, tabela);
-	strcat(DIR_LIN, NOME);
-	strcat(DIR_LIN, EXT_LIN);
+	strcat(dir, NOME);
+	strcat(dir, EXT_LIN);
 	FILE *arq;
-	arq=fopen(DIR_LIN,"rb");
+	arq=fopen(dir,"rb");
 	if(arq != NULL)
 	{
 		int indice = 0;
@@ -61,11 +65,13 @@ void readLinesBin(char *tabela, linha *aux_campos){
 }
 /*
 void printLinesBin(char *tabela){
+	char dir[100];
+	strcpy(dir, DIR_LIN);
 	strcpy(NOME, tabela);
-	strcat(DIR_LIN, NOME);
-	strcat(DIR_LIN, EXT_LIN);
+	strcat(dir, NOME);
+	strcat(dir, EXT_LIN);
 	FILE *arq;
-	arq=fopen(DIR_LIN,"rb");
+	arq=fopen(dir,"rb");
 	if(arq != NULL)
 	{
 		while(1){
@@ -82,15 +88,17 @@ void printLinesBin(char *tabela){
 		printf("\nprintTableBin: Erro ao abrir o arquivo para leitura!\n");
 		exit(1);
 	}
-}*/
-
+}
+*/
 
 int lengthLinesBin(char *tabela){
+	char dir[100];
+	strcpy(dir, DIR_LIN);
 	strcpy(NOME, tabela);
-	strcat(DIR_LIN, NOME);
-	strcat(DIR_LIN, EXT_LIN);
+	strcat(dir, NOME);
+	strcat(dir, EXT_LIN);
 	FILE *arq;
-	arq=fopen(DIR_LIN,"rb");
+	arq=fopen(dir,"rb");
 	if(arq != NULL)
 	{
 		int indice = 0;
