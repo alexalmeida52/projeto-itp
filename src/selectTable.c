@@ -5,6 +5,7 @@
 #include "selectTable.h"
 
 void selectTable(){
+	printf("Tabelas existentes:\n");
 	printf("\n");
 	DIR *dir;
 	dir = opendir("tables/");

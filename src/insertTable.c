@@ -7,6 +7,7 @@
 #include "operaCellsBin.h"
 #include "operaLinesBin.h"
 
+
 typedef struct tcoluna{
     char tipoColuna[10];
     char nomeColuna[10];
@@ -38,50 +39,69 @@ void insertTable(){ //insere nova linha
 
     } 
     printf("\n");
-
-    int valorCelulaInt;
+    int valorCelula;
     char valorCelulaString[50];
     for(int i = 0; i < qtdColunas; i++){
-        printf("Insira %s:", aux_colunas[i].nomeColuna);
+        printf("Insira o %s:", aux_colunas[i].nomeColuna);
         //do{ Sem o do while funciona da mesma forma.
 
             if ((strcmp(aux_colunas[i].tipoColuna, "int(PK)")==0)||(strcmp(aux_colunas[i].tipoColuna, "int")==0)){//condição alterado, pois não tava dando certo.
                 while(1){
-                    scanf("%d", &valorCelulaInt);//Tava faltando o &.
-                    if((int)valorCelulaInt){ //Não tá funcionando com (int)valorCelulaInt.
-
+                    scanf("%s", &valorCelulaString);//Tava faltando o &.
+                    if (atoi(valorCelulaString)){ // Verifica se tem existe letra.
+                        // código para inserir o campo no arquivo.
                         break;
-                    } else{
-                        printf("O valor informado não é do tipo inteiro. Tente novamente.\n");
+                    } else {
+                        printf("Erro. Você não está inserindo um valor inteiro.\n");
+                        printf("Insira novamente o %s:", aux_colunas[i].nomeColuna);
                         continue;
                     }
+                    
+                    
                 }
             } else if(strcmp(aux_colunas[i].tipoColuna, "char")==0){
                 while(1){
                     scanf("%s", valorCelulaString);
-                    // falta a condição de para.
+                    // código para inserir o campo no arquivo.
                     break;
+                    
                 }
             } else if(strcmp(aux_colunas[i].tipoColuna, "float")==0){
                 while(1){
                     scanf("%s", valorCelulaString);
-                    // falta a condição de para.
+                    if (atoi(valorCelulaString)){ // Verifica se existe letra.
+                        // código para inserir o campo no arquivo.
+                        break;
+                    } else {
+                        printf("Erro. Você não está inserindo um valor float.\n");
+                        printf("Insira novamente o %s:", aux_colunas[i].nomeColuna);
+                        continue;
+                    }
+                    
+                    
                     break;
                 }
             } else if(strcmp(aux_colunas[i].tipoColuna, "double")==0){
                 while(1){
                     scanf("%s", valorCelulaString);
-                    // falta a condição de para.
+                    if (atoi(valorCelulaString)){ // Verifica se tem existe letra.
+                        // código para inserir o campo no arquivo.
+                        break;
+                    } else {
+                        printf("Erro. Você não está inserindo um valor double.\n");
+                        printf("Insira novamente o %s:", aux_colunas[i].nomeColuna);
+                        continue;
+                    }
                     break;
                 }
             }
 
         //} while(1);
 
-            system("clear");
 
     }
 
+        printf("Inserido com súcesso.\n");
 
 
 

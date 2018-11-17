@@ -9,6 +9,7 @@ void deleteTable(){
 	char table[50];
 	char arquivo[50] = "tables/";
 	char confirm [2];
+	selectTable();
 	printf("Qual tabela dejesa excluir? ");
 	scanf("%s", table);
 	DIR *dir;
@@ -24,7 +25,6 @@ void deleteTable(){
 				strcat(arquivo, table);
 				remove(arquivo);
 				return;
-				printf("A func continuou.\n");
 			} 
     	}
     } 

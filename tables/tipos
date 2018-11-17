@@ -1,0 +1,1 @@
+{int(PK)} id		{char} nome		{float} preco		{double} total		
