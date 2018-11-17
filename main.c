@@ -28,7 +28,7 @@ int main(int argc, char const *argv[])
 		} else if(strcmp(op, "selectTable")==0 || strcmp(op, "3")==0){
 			system("clear");
 			selectTable();
-			printf("Deseja inserir em alguma tabela?(s/n) ");
+			printf("Deseja inserir novos dados em alguma tabela?(s/n) ");
 			scanf(" %c", &op1); //Para não ter que inserir sempre que quiser ver as tabelas.
 			if (op1=='s'){
 				insertTable();
