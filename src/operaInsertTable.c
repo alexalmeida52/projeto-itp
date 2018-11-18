@@ -21,14 +21,44 @@ typedef struct tlinha{
 /*Verifica se o valor informado é inteiro e se já existe na tabela.
 Caso exista, pede para o usuario informar o valor novamente até que
 seja válido para inserção.*/
-char * verificaChavePrimaria(char *valorCelulaString, coluna *aux_colunas, int i){
+char * verificaChavePrimaria(char *valorCelulaString, coluna *aux_colunas, int i, char *tabelA){
     
     char op1;
     char valorString[50];
 
     if (atoi(valorCelulaString)){ // Verifica se tem existe letra, se sim, o atoi retorna 0
-        return valorCelulaString;
-        // verificar se PK já existe
+        char nOME[50];
+        char eXT_COL[10] = ".bin";
+        char dIR_COL[50] = "bin/colunas/";
+        strcpy(nOME, tabelA);
+        strcat(dIR_COL, nOME);
+        strcat(dIR_COL, eXT_COL);
+        FILE *arq;
+        arq=fopen(dIR_COL,"rb");
+        if(arq != NULL) // Verifica se já existe chave primária.
+        {
+            while(1){
+                coluna p;
+                size_t r = fread(&p, sizeof(coluna), 1, arq);
+                if(r < 1)
+                    return valorCelulaString; //Se r = 0 então já leu todos os elementos e não encontrou id igual
+                else{
+                    if (strcmp(p.nomeColuna, valorCelulaString)==0)
+                    {
+                        printf("Já existe esse id\n");
+                        strcpy(valorCelulaString, "ERROR");
+                        return valorCelulaString; //Retorno tratado no inserTable();
+                    } 
+                }
+                    
+            }
+            fclose(arq); // fecha o arquivo
+        }
+        else{
+            printf("\nprintColumnsBin: Erro ao abrir o arquivo para leitura!\n");
+            exit(1); // aborta o programa
+        }
+        
         
     } else {
         printf("\nErro. Você está inserindo um valor que não é INTEIRO ou que é NULO(zero).\n");
@@ -37,7 +67,7 @@ char * verificaChavePrimaria(char *valorCelulaString, coluna *aux_colunas, int i
         if (op1=='s'){
             printf("\nInsira novamente o %s: ", aux_colunas[i].nomeColuna);
             scanf("%s", &valorString);
-            return verificaChavePrimaria(valorString, aux_colunas, i);
+            return verificaChavePrimaria(valorString, aux_colunas, i, tabelA);
         	
         } else {
         	strcpy(valorCelulaString, "0");

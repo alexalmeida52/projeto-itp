@@ -50,10 +50,15 @@ void insertTable(){ //insere nova linha
 
 		if (strcmp(aux_colunas[i].tipoColuna, "int(PK)")==0){
 			scanf("%s", &valorCelulaString);
-			strcpy(
-				aux_linha.vetorCelula[i].valorCelula,
-				verificaChavePrimaria(valorCelulaString, aux_colunas, i)
-			);
+			// Se verificaChavePrimaria() retornar ERROR, então já existe esse id.
+			if(strcmp(verificaChavePrimaria(valorCelulaString, aux_colunas, i, tabela), "ERROR")==0){
+				exit(1);
+			} else {
+				strcpy(
+					aux_linha.vetorCelula[i].valorCelula,
+					verificaChavePrimaria(valorCelulaString, aux_colunas, i, tabela)
+				);
+			}
 
 		} else if(strcmp(aux_colunas[i].tipoColuna, "int")==0){
 			scanf("%s", &valorCelulaString);

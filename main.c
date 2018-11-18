@@ -29,7 +29,7 @@ int main(int argc, char const *argv[])
 			system("clear");
 			selectTable();
 			printf("Deseja inserir novos dados em alguma tabela?(s/n) ");
-			scanf(" %c", &op1); //Para não ter que inserir sempre que quiser ver as tabelas.
+			scanf(" %c", &op1); //Para não ter que inserir sempre ao ver as tabelas.
 			if (op1=='s'){
 				insertTable();
 			} else {

@@ -7,7 +7,7 @@ char NOME[100];
 char DIR_COL[100] = "bin/colunas/";
 char EXT_COL[5] = ".bin";
 
-typedef struct tcoluna{
+typedef struct tcoluna{ 
 	char tipoColuna[10];
 	char nomeColuna[10];
 } coluna;
