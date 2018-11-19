@@ -18,6 +18,7 @@ int main(int argc, char const *argv[])
 	system("clear");
 	char op[50];
 	char op1;
+	char nomeTabela[50];
 
 	do{
 		panel();
@@ -41,7 +42,15 @@ int main(int argc, char const *argv[])
 			deleteTable();
 		} else if(strcmp(op, "clear")==0 || strcmp(op, "6")==0){
 			system("clear");
-		} else {
+		} else if(strcmp(op, "showTables")==0 || strcmp(op, "7")==0){
+			system("clear");
+			selectTable();
+			printf("Nome da tabela para ser exibida: ");
+			scanf("%s", nomeTabela);
+			system("clear");
+			printf("Dados da tabela\n");
+			printColumnsBin(nomeTabela);
+		}else {
 			system("clear");
 			printf("Comando inválido.\n");
 		}

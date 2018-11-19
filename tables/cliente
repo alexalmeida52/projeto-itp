@@ -1,1 +1,1 @@
-{int(PK)} id		{char} nome		{char} end		{int} cpf		
+{int(PK)} id		{char} nome		{int} idade		{char} cpf		

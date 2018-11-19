@@ -154,7 +154,7 @@ double verificaDouble(char *valorCelulaString, coluna *aux_colunas, int i){
     }
 }
 
-void panelInsertTable(char *tabela, coluna *aux_colunas, int qtdColunas, linha aux_linha){
+/*void panelInsertTable(char *tabela, coluna *aux_colunas, int qtdColunas){
 	system("clear");
 	printf("Tabela selionada: %s\n\n", tabela);
 	printf("Colunas:\n");
@@ -164,4 +164,4 @@ void panelInsertTable(char *tabela, coluna *aux_colunas, int qtdColunas, linha a
 		printf("%s\t", aux_linha.vetorCelula[i].valorCelula);
 	}
 	printf("\n\n\n");
-}
+}*/

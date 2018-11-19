@@ -29,23 +29,23 @@ void insertTable(){ //insere nova linha
 	strcat(dir, tabela);
 	int qtdColunas = lengthColumnsBin(tabela); //Era "dir" como parâmetro.
 	char op1;
-
+	coluna vetor[qtdColunas];
 	coluna aux_colunas[qtdColunas];
 	readColumnsBin(tabela, aux_colunas);
+	
 
 
 	linha aux_linha;
 
-	for(int i=0; i<10; i++){
-		strcpy(aux_linha.vetorCelula[i].valorCelula, ""); //inicia todos as celulas da linha com vazio
-	}
-	
+/*	for(int i=0; i<10; i++){
+		strcpy(vetor[i].nomeColuna, ""); //inicia todos as celulas da linha com vazio
+	}*/
+	printf("Colunas %d\n", qtdColunas);
 	int celulaInt, celulaDaTabela;
 	char valorCelulaString[50];
-	
 	for(int i = 0; i < qtdColunas; i++){
-
-		panelInsertTable(tabela, aux_colunas, qtdColunas, aux_linha);
+		
+		//panelInsertTable(tabela, aux_colunas, qtdColunas, aux_linha);
 		printf("Insira o %s: ", aux_colunas[i].nomeColuna);
 
 		if (strcmp(aux_colunas[i].tipoColuna, "int(PK)")==0){
@@ -55,7 +55,7 @@ void insertTable(){ //insere nova linha
 				exit(1);
 			} else {
 				strcpy(
-					aux_linha.vetorCelula[i].valorCelula,
+					vetor[i].nomeColuna,
 					verificaChavePrimaria(valorCelulaString, aux_colunas, i, tabela)
 				);
 			}
@@ -63,19 +63,22 @@ void insertTable(){ //insere nova linha
 		} else if(strcmp(aux_colunas[i].tipoColuna, "int")==0){
 			scanf("%s", &valorCelulaString);
 			strcpy(
-				aux_linha.vetorCelula[i].valorCelula,
+				vetor[i].nomeColuna,
 				verificaInt(valorCelulaString, aux_colunas, i)
 			);
 		} else if(strcmp(aux_colunas[i].tipoColuna, "float")==0){
 			scanf("%s", &valorCelulaString);
 			celulaDaTabela = verificaFloat(valorCelulaString, aux_colunas, i);
+			//strcpy(vetor[i].valorCelula, celulaDaTabela);
 
 		} else if(strcmp(aux_colunas[i].tipoColuna, "double")==0){
 			scanf("%s", &valorCelulaString);
 			celulaDaTabela = verificaDouble(valorCelulaString, aux_colunas, i);
+			//strcpy(vetor[i].valorCelula, celulaDaTabela);
 
 		} else if(strcmp(aux_colunas[i].tipoColuna, "char")==0){
 			scanf("%s", &valorCelulaString);
+			strcpy(vetor[i].nomeColuna, valorCelulaString);
 
 		} else if(strcmp(aux_colunas[i].tipoColuna, "string")==0){
 			scanf("%s", &valorCelulaString);
@@ -83,10 +86,15 @@ void insertTable(){ //insere nova linha
 
 	}
 
+	for (int i = 0; i < qtdColunas; i++)
+	{
+		strcpy(vetor[i].tipoColuna, "");
+	}
+	createColumnsBin(tabela, qtdColunas, vetor);
+	printColumnsBin(tabela);
 
 
 	printf("\nDados inseridos com súcesso na tabela %s.\n", tabela);
-	printf("Valor id:::: %s\n", aux_linha.vetorCelula[0].valorCelula);
 
 
 
