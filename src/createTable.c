@@ -10,6 +10,26 @@ typedef struct tcelula{
 	char valorCelula[10];
 } celula;
 
+char * verificaTipoColuna(char * tipoColuna){
+
+	char tipo[50];
+	if(strcmp(tipoColuna, "int")==0){
+		return tipoColuna;
+	} else if(strcmp(tipoColuna, "float")==0){
+		return tipoColuna;
+	} else if(strcmp(tipoColuna, "double")==0){
+		return tipoColuna;
+	} else if(strcmp(tipoColuna, "char")==0){
+		return tipoColuna;
+	} else if(strcmp(tipoColuna, "string")==0){
+		return tipoColuna;
+	} else {
+		printf("Tipo inválido. Os únicos tipos possíveis são: int, float, double, char e string.\n\nInsira novamente: ");
+		scanf("%s", &tipo);
+		return verificaTipoColuna(tipo);
+	}
+}
+
 void createTable(){
 	FILE *file;
 	char dir[100]= "tables/";
@@ -22,6 +42,8 @@ void createTable(){
 	printf("%s\n", dir);
 	printf("Quantos campos: ");
 	scanf("%d", &qtdColunas);
+
+	char tipoColuna[50];
 	
 	if(((int)qtdColunas)){ 
 		
@@ -40,7 +62,8 @@ void createTable(){
 			printf("Nome da coluna[%d]: ", i+1);
 			scanf("%s", tabela[0][i].valorCelula);
 			printf("Tipo da coluna[%d]: ", i+1);
-			scanf("%s", tabela[0][i].tipoCelula);
+			scanf("%s",tipoColuna);
+			strcpy(tabela[0][i].tipoCelula, verificaTipoColuna(tipoColuna));
 		}
 
 		file = fopen(dir, "w");
@@ -81,4 +104,3 @@ void createTable(){
 		}
 	}
 }
-
