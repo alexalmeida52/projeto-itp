@@ -1,1 +1,1 @@
-{int(PK)} id		{char} nome		
+{int(PK)} id		{char} nome		{int} idade		

@@ -2,9 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <dirent.h>
-#include "operaColumnsBin.h"
-#include "operaCellsBin.h"
-#include "operaLinesBin.h"
+#include "operaTable.h"
 #include "createTable.h"
 #include "selectTable.h"
 #include "help.h"
@@ -48,8 +46,9 @@ int main(int argc, char const *argv[])
 			printf("Nome da tabela para ser exibida: ");
 			scanf("%s", nomeTabela);
 			system("clear");
-			printf("Dados da tabela\n");
-			printColumnsBin(nomeTabela);
+			printf("Dados da tabela %s:\n\n", nomeTabela);
+			printTableBin(nomeTabela);
+			printf("\n\n\n");
 		}else {
 			system("clear");
 			printf("Comando inválido.\n");

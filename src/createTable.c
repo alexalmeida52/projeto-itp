@@ -2,45 +2,51 @@
 #include <stdlib.h>
 #include <string.h>
 #include "createTable.h"
-#include "operaColumnsBin.h"
+#include "operaTable.h"
 #include "panel.h"
 
-typedef struct tcoluna{
-    char tipoColuna[10];
-    char nomeColuna[10];
-} coluna;
+typedef struct tcelula{
+	char tipoCelula[10];
+	char valorCelula[10];
+} celula;
 
 void createTable(){
 	FILE *file;
 	char dir[100]= "tables/";
 	char nome[100];
-	int qtdCampos;
-	coluna *campo;
+	int qtdColunas;
+	celula **tabela; //a tabela é uma matriz de celulas
 	printf("Nome da tabela: ");
 	scanf("%s", nome);
 	strcat(dir, nome);
 	printf("%s\n", dir);
 	printf("Quantos campos: ");
-	scanf("%d", &qtdCampos);
+	scanf("%d", &qtdColunas);
 	
-	if(((int)qtdCampos)){ 
-		campo = malloc(sizeof(coluna)*qtdCampos);
+	if(((int)qtdColunas)){ 
+		
+		tabela = malloc(sizeof(celula *)*1); //para armazenar as colunas precisamos de somente uma linha
+		for (int i = 0; i < 1; ++i){
+			tabela[i] = malloc(sizeof(celula)*qtdColunas);
+		} // tabela[1][qtdColunas]
+
+
 
 		printf("Nome da coluna (chave primária)[1]: ");
-		scanf("%s", campo[0].nomeColuna);
-		strcpy(campo[0].tipoColuna, "int(PK)");
+		scanf("%s", tabela[0][0].valorCelula);
+		strcpy(tabela[0][0].tipoCelula, "int(PK)");
 
-		for (int i = 1; i < qtdCampos; i++){
+		for (int i = 1; i < qtdColunas; i++){
 			printf("Nome da coluna[%d]: ", i+1);
-			scanf("%s", campo[i].nomeColuna);
+			scanf("%s", tabela[0][i].valorCelula);
 			printf("Tipo da coluna[%d]: ", i+1);
-			scanf("%s", campo[i].tipoColuna);
+			scanf("%s", tabela[0][i].tipoCelula);
 		}
 
 		file = fopen(dir, "w");
 		if (file!=NULL){
-			for (int i = 0; i < qtdCampos; ++i){
-				fprintf(file, "{%s} %s\t\t", campo[i].tipoColuna, campo[i].nomeColuna);
+			for (int i = 0; i < qtdColunas; ++i){
+				fprintf(file, "{%s} %s\t\t", tabela[0][i].tipoCelula, tabela[0][i].valorCelula);
 			}
 			system("clear");
 			panel();
@@ -56,6 +62,23 @@ void createTable(){
 	}
 
 	printf("%s\n", nome);
-	createColumnsBin(nome, qtdCampos, campo);
+	createTableBin(nome, 1, qtdColunas, tabela);
+
+	celula **aux_tabela;
+
+	aux_tabela = malloc(sizeof(celula *)*1); //para armazenar as colunas precisamos de somente uma linha
+	for (int i = 0; i < 1; ++i){
+		aux_tabela[i] = malloc(sizeof(celula)*qtdColunas);
+	} // aux_tabela[1][qtdColunas]
+
+	readTableBin(nome, 1, qtdColunas, aux_tabela);
+
+	for (int i = 0; i < 1; ++i)
+	{
+		for (int j = 0; j < qtdColunas; ++j)
+		{
+			printf("%s %s\n", aux_tabela[i][j].tipoCelula, aux_tabela[i][j].valorCelula);
+		}
+	}
 }
 
