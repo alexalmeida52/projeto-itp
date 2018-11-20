@@ -7,6 +7,7 @@ all:
 	gcc -c ./src/deleteTable.c -I ./include -o ./obj/deleteTable.o
 	gcc -c ./src/operaInsertTable.c -I ./include -o ./obj/operaInsertTable.o
 	gcc -c ./src/insertTable.c -I ./include -o ./obj/insertTable.o
+	gcc -c ./src/removeLine.c -I ./include -o ./obj/removeLine.o
 	gcc ./main.c ./obj/*.o -I ./include -o ./main
 
 run:

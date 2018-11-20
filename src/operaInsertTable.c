@@ -9,9 +9,11 @@ typedef struct tcelula{
 	char valorCelula[10];
 } celula;
 	
-/*Verifica se o valor informado é inteiro e se já existe na tabela.
-Caso exista, pede para o usuario informar o valor novamente até que
-seja válido para inserção.*/
+
+// A função verificaChavePrimaria verifica se a string inserida pelo usuario é um inteiro.
+// Se sim, a função também verifica se o valor inserido já existe na tabela, se sim, é pedido
+// que o usuário informe outro valor. Se o número iserido em algum momento não for inteiro, é
+// pedido para o usuário informar um valor válido e verifica-o de novo utilizando a própria função. 
 char * verificaChavePrimaria(char *valorCelulaString, celula **aux_tabela, int coluna, char *nomeTabela){
 	
 	char op;
@@ -50,9 +52,9 @@ char * verificaChavePrimaria(char *valorCelulaString, celula **aux_tabela, int c
 }
 
 
-/*Verifica se o valor informado é inteiro e se já existe na tabela.
-Caso exista, pede para o usuario informar o valor novamente até que
-seja válido para inserção.*/
+// A função verificaInt verifica se a string inserida pelo usuario é realmente um inteiro.
+// Se sim, a função retorna a mesma string. Se não, pede para o usuário informar outro valor
+// e verifica novamente utilizando a própria função.
 char * verificaInt(char *valorCelulaString, celula **aux_tabela, int coluna){
 	
 	char op;
@@ -75,6 +77,10 @@ char * verificaInt(char *valorCelulaString, celula **aux_tabela, int coluna){
 	}
 }
 
+
+// A função verificaFloat verifica se a string inserida pelo usuario é realmente um float.
+// Se sim, a função retorna a mesma string. Se não, pede para o usuário informar outro valor
+// e verifica novamente utilizando a própria função.
 char * verificaFloat(char *valorCelulaString, celula **aux_tabela, int coluna){
 	
 	char op;
@@ -99,6 +105,10 @@ char * verificaFloat(char *valorCelulaString, celula **aux_tabela, int coluna){
 	}
 }
 
+
+// A função verificaDouble verifica se a string inserida pelo usuario é realmente um double.
+// Se sim, a função retorna a mesma string. Se não, pede para o usuário informar outro valor
+// e verifica novamente utilizando a própria função.
 char * verificaDouble(char *valorCelulaString, celula **aux_tabela, int coluna){
 	
 	char op;
@@ -121,21 +131,20 @@ char * verificaDouble(char *valorCelulaString, celula **aux_tabela, int coluna){
 	}
 }
 
+//imprime o estado atual da tabela enquanto o usuario vai inserindo os campos
 void panelInsertTable(char *nomeTabela, celula **aux_tabela){
 	system("clear");
 	printf("Tabela selionada: %s\n\n", nomeTabela);
 	printf("Colunas:\n");
 	
+	printTableBin(nomeTabela); //imprime a tabela salva
+
+	/* codigo para exibir a linha que o usuário esta inserindo */
 	int linhas = lengthLinesTableBin(nomeTabela);
 	int colunas = lengthColumnsTableBin(nomeTabela);
-	//imprime colunas
-	for (int i = 0; i < colunas; ++i){
-		printf("%s %s\t", aux_tabela[0][i].tipoCelula, aux_tabela[0][i].valorCelula);
-	}
-	printf("\n");
-	
 	for (int i = 0; i < colunas; i++){
 		printf("%s\t\t", aux_tabela[linhas][i].valorCelula);
 	}
+	/* fim do codigo para exibir a linha que o usuário esta inserindo */
 	printf("\n\n\n");
 }

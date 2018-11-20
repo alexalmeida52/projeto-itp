@@ -9,6 +9,7 @@
 #include "panel.h"
 #include "deleteTable.h"
 #include "insertTable.h"
+#include "removeLine.h"
 
 
 int main(int argc, char const *argv[])
@@ -34,13 +35,17 @@ int main(int argc, char const *argv[])
 			} else {
 
 			}
-		} else if(strcmp(op, "help")==0 || strcmp(op, "5")==0){
-			help();
 		} else if(strcmp(op, "deleteTable")==0 || strcmp(op, "4")==0){
 			deleteTable();
-		} else if(strcmp(op, "clear")==0 || strcmp(op, "6")==0){
+		} else if(strcmp(op, "insertTable")==0 || strcmp(op, "5")==0){
+			insertTable();
+		} else if(strcmp(op, "removeLine")==0 || strcmp(op, "6")==0){
+			removeLine();
+		} else if(strcmp(op, "help")==0 || strcmp(op, "7")==0){
+			help();
+		} else if(strcmp(op, "clear")==0 || strcmp(op, "8")==0){
 			system("clear");
-		} else if(strcmp(op, "showTables")==0 || strcmp(op, "7")==0){
+		} else if(strcmp(op, "showTables")==0 || strcmp(op, "9")==0){
 			system("clear");
 			selectTable();
 			printf("Nome da tabela para ser exibida: ");
@@ -53,7 +58,7 @@ int main(int argc, char const *argv[])
 			system("clear");
 			printf("Comando inválido.\n");
 		}
-	} while (!(strcmp(op, "sair")==0 || strcmp(op, "8")==0));
+	} while (!(strcmp(op, "sair")==0 || strcmp(op, "10")==0));
 	system("clear");
 	return 0;
 }

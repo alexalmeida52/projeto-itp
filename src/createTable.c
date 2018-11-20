@@ -10,7 +10,7 @@ typedef struct tcelula{
 	char valorCelula[10];
 } celula;
 
-char * verificaTipoColuna(char * tipoColuna){
+char * verificaTipoColuna(char * tipoColuna){ //Função recursiva que obriga o usuário a digitar o tipo correto
 
 	char tipo[50];
 	if(strcmp(tipoColuna, "int")==0){
