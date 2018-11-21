@@ -21,7 +21,7 @@ char * diretorioArquivo(char *nomeTabela, char *dir){
 	strcat(dir, EXT);
 	return dir;
 }
-
+ 
 /* A função createTableBin recebe o nome da tabela, a matriz já preenchida com os dados, as linhas e colunas.
 Com essas informações é gerado um arquivo nomeTabela.bin na pasta bin/ */
 void createTableBin(char *nomeTabela, int linhas, int colunas, celula **matrizCelulas){ //matrizCelulas é a tabela em si
@@ -82,11 +82,10 @@ int lengthLinesTableBin(char *nomeTabela){ //matrizCelulas é a tabela em si
 
 	if(arq != NULL){
 		fread(&lin, sizeof(int), 1, arq);
-		fread(&col, sizeof(int), 1, arq);
 		fclose(arq);
 	}
 	else{
-		printf("\nlengthLinesTableBin: Erro ao abrir o arquivo para leitura!\n");
+		printf("A tabela não existe, tente novamente!\n");
 		exit(1);
 	}
 
