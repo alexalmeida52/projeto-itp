@@ -18,7 +18,7 @@ void insertTable(){ //insere nova linha
 	
 	char nomeTabela[50];
 	printf("Insira o nome da tabela: ");
-	scanf("%s", &nomeTabela);
+	scanf("%s", nomeTabela);
 
 
 	celula **aux_tabela; //a tabela é uma matriz de celulas	
@@ -44,37 +44,37 @@ void insertTable(){ //insere nova linha
 		printf("Insira o %s: ", aux_tabela[0][i].valorCelula);
 
 		if (strcmp(aux_tabela[0][i].tipoCelula, "int(PK)")==0){
-			scanf("%s", &valorCelulaString);
+			scanf("%s", valorCelulaString);
 			strcpy(
 				aux_tabela[linhas][i].valorCelula,
 				verificaChavePrimaria(valorCelulaString, aux_tabela, i, nomeTabela)
 			);
 
 		} else if(strcmp(aux_tabela[0][i].tipoCelula, "int")==0){
-			scanf("%s", &valorCelulaString);
+			scanf("%s", valorCelulaString);
 			strcpy(
 				aux_tabela[linhas][i].valorCelula,
 				verificaInt(valorCelulaString, aux_tabela, i)
 			);
 		} else if(strcmp(aux_tabela[0][i].tipoCelula, "float")==0){
-			scanf("%s", &valorCelulaString);
+			scanf("%s", valorCelulaString);
 			strcpy(
 				aux_tabela[linhas][i].valorCelula,
 				verificaFloat(valorCelulaString, aux_tabela, i)
 			);
 		} else if(strcmp(aux_tabela[0][i].tipoCelula, "double")==0){
-			scanf("%s", &valorCelulaString);
+			scanf("%s", valorCelulaString);
 			strcpy(
 				aux_tabela[linhas][i].valorCelula,
 				verificaDouble(valorCelulaString, aux_tabela, i)
 			);
 
 		} else if(strcmp(aux_tabela[0][i].tipoCelula, "char")==0){
-			scanf("%s", &valorCelulaString);
+			scanf("%s", valorCelulaString);
 			strcpy(aux_tabela[linhas][i].valorCelula, valorCelulaString);
 
 		} else if(strcmp(aux_tabela[0][i].tipoCelula, "string")==0){
-			scanf("%s", &valorCelulaString);
+			scanf("%s", valorCelulaString);
 			strcpy(aux_tabela[linhas][i].valorCelula, valorCelulaString);
 		}
 

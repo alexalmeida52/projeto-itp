@@ -10,7 +10,7 @@ typedef struct tcelula{
 	char tipoCelula[10];
 	char valorCelula[10];
 } celula;
-
+ 
 /* A função diretorioArquivo recebe o nome da tabela e o adiciona 
 na outra string recebida no seguinte formato: "dir/nomeTabela.bin" */
 char * diretorioArquivo(char *nomeTabela, char *dir){

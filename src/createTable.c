@@ -25,7 +25,7 @@ char * verificaTipoColuna(char * tipoColuna){ //Função recursiva que obriga o 
 		return tipoColuna;
 	} else {
 		printf("Tipo inválido. Os únicos tipos possíveis são: int, float, double, char e string.\n\nInsira novamente: ");
-		scanf("%s", &tipo);
+		scanf("%s", tipo);
 		return verificaTipoColuna(tipo);
 	}
 }
@@ -42,8 +42,8 @@ void createTable(){
 	printf("%s\n", dir);
 	printf("Quantos campos: ");
 	scanf("%d", &qtdColunas);
-
 	char tipoColuna[50];
+
 	
 	if(((int)qtdColunas)){ 
 		
@@ -84,23 +84,6 @@ void createTable(){
 		printf("Error. Digite um valor inteiro.\n");
 	}
 
-	printf("%s\n", nome);
+	// Criar arquivo binário com os nomes e tipos da colunas
 	createTableBin(nome, 1, qtdColunas, tabela);
-
-	celula **aux_tabela;
-
-	aux_tabela = malloc(sizeof(celula *)*1); //para armazenar as colunas precisamos de somente uma linha
-	for (int i = 0; i < 1; ++i){
-		aux_tabela[i] = malloc(sizeof(celula)*qtdColunas);
-	} // aux_tabela[1][qtdColunas]
-
-	readTableBin(nome, 1, qtdColunas, aux_tabela);
-
-	for (int i = 0; i < 1; ++i)
-	{
-		for (int j = 0; j < qtdColunas; ++j)
-		{
-			printf("%s %s\n", aux_tabela[i][j].tipoCelula, aux_tabela[i][j].valorCelula);
-		}
-	}
 }

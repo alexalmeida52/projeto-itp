@@ -19,6 +19,6 @@ int lengthColumnsTableBin(char *nomeTabela);
 
 void printTableBin(char *nomeTabela);
 
-void printColumnsTableBin(char *nomeTabela)
+void printColumnsTableBin(char *nomeTabela);
 
-#endif // OPERATABLE_H_INCLUDED
+#endif // OPERATABLE_H_INCLUDED 

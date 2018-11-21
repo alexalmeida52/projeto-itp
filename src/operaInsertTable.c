@@ -26,7 +26,7 @@ char * verificaChavePrimaria(char *valorCelulaString, celula **aux_tabela, int c
 			
 			if (strcmp(aux_tabela[i][coluna].valorCelula, valorCelulaString)==0){
 				printf("\nO valor inserido já existe. Insira novamente o %s: ", aux_tabela[0][coluna].valorCelula);
-				scanf("%s", &valorString);
+				scanf("%s", valorString);
 				return verificaChavePrimaria(valorString, aux_tabela, coluna, nomeTabela);
 			}
 
@@ -41,7 +41,7 @@ char * verificaChavePrimaria(char *valorCelulaString, celula **aux_tabela, int c
 		scanf(" %c", &op);
 		if (op=='s'){
 			printf("\nInsira novamente o %s: ", aux_tabela[0][coluna].valorCelula);
-			scanf("%s", &valorString);
+			scanf("%s", valorString);
 			return verificaChavePrimaria(valorString, aux_tabela, coluna, nomeTabela);
 			
 		} else {
@@ -68,7 +68,7 @@ char * verificaInt(char *valorCelulaString, celula **aux_tabela, int coluna){
 		scanf(" %c", &op);
 		if (op=='s'){
 			printf("\nInsira novamente o %s: ", aux_tabela[0][coluna].valorCelula);
-			scanf("%s", &valorString);
+			scanf("%s", valorString);
 			return verificaInt(valorString, aux_tabela, coluna);
 		} else {
 			strcpy(valorCelulaString, "0");
@@ -96,7 +96,7 @@ char * verificaFloat(char *valorCelulaString, celula **aux_tabela, int coluna){
 		scanf(" %c", &op);
 		if (op=='s'){
 			printf("\nInsira novamente o %s: ", aux_tabela[0][coluna].valorCelula);
-			scanf("%s", &valorString);
+			scanf("%s", valorString);
 			return verificaFloat(valorString, aux_tabela, coluna);
 		} else {
 			strcpy(valorCelulaString, "0");
@@ -122,7 +122,7 @@ char * verificaDouble(char *valorCelulaString, celula **aux_tabela, int coluna){
 		scanf(" %c", &op);
 		if (op=='s'){
 			printf("\nInsira novamente o %s: ", aux_tabela[0][coluna].valorCelula);
-			scanf("%s", &valorString);
+			scanf("%s", valorString);
 			return verificaDouble(valorString, aux_tabela, coluna);
 		} else {
 			strcpy(valorCelulaString, "0");
