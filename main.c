@@ -10,6 +10,8 @@
 #include "deleteTable.h"
 #include "insertTable.h"
 #include "removeLine.h"
+#include "searchTable.h"
+
 
 
 int main(int argc, char const *argv[])
@@ -18,7 +20,7 @@ int main(int argc, char const *argv[])
 	char op[50];
 	char op1;
 	char nomeTabela[50];
-
+	panelSearchTable();
 	do{
 		panel();
 		printf("Digite uma opção: ");

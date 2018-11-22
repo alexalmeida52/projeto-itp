@@ -21,4 +21,6 @@ void printTableBin(char *nomeTabela);
 
 void printColumnsTableBin(char *nomeTabela);
 
+void printLineTableBin(char *nomeTabela, int linha);
+
 #endif // OPERATABLE_H_INCLUDED 

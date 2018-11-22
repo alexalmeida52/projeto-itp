@@ -161,6 +161,27 @@ void printColumnsTableBin(char *nomeTabela){
 		printf("\n");
 }
 
+void printLineTableBin(char *nomeTabela, int linha){
+
+		int linhas = lengthLinesTableBin(nomeTabela);
+		int colunas = lengthColumnsTableBin(nomeTabela);
+
+		//Declara matriz para preenchê-la com dados da tabela passada nos parâmetros
+		celula **tabela;
+		tabela = malloc(sizeof(celula *)*linhas);
+		for (int i = 0; i < linhas; ++i){
+			tabela[i] = malloc(sizeof(celula)*colunas);
+		} // tabela[linhas][colunas]
+
+		readTableBin(nomeTabela, linhas, colunas, tabela); //Preenchendo a matriz tabela
+
+		//imprimindo colunas
+		for (int j = 0; j < colunas; ++j){
+			printf("%s %s\t\t", tabela[linha][j].tipoCelula, tabela[linha][j].valorCelula);
+		}
+		printf("\n");
+}
+
 
 
 /*int main(void) {
