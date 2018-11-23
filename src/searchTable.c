@@ -28,31 +28,31 @@ void searchTable(char *nomeTabela, char *nomeColuna, int opcao, char *valorPesqu
 
 	readTableBin(nomeTabela, linhas, colunas, tabela);
 	//fim alocando matriz e preenchendo
-
+int naoExisteValor = 1;
 	switch(opcao){
 		case 1:
 			//Percorre todas as colunas
-		for (int i = 0; i < colunas; ++i){
-				//Encontra a coluna
-			if(strcmp(tabela[0][i].valorCelula, nomeColuna)==0){ 
-					//Percorre todas as linhas
-				for (int j = 0; j < linhas; ++j){ 
-						//Testa se valor informado é menor que o da tabela, se sim, imprime a linha
-					if (atof(valorPesquisa) < atof(tabela[j][i].valorCelula)){ 
-							printLineTableBin(nomeTabela, j); //j = linha
+			for (int i = 0; i < colunas; ++i){
+					//Encontra a coluna
+				if(strcmp(tabela[0][i].valorCelula, nomeColuna)==0){ 
+						//Percorre todas as linhas
+					for (int j = 1; j < linhas; ++j){ 
+							//Testa se valor informado é menor que o da tabela, se sim, imprime a linha
+						if (atof(valorPesquisa) < atof(tabela[j][i].valorCelula)){ 
+								printLineTableBin(nomeTabela, j); //j = linha
+							}
 						}
 					}
 				}
-			}
-			;break;
+		;break;
 
-			case 2:
-			//Percorre todas as colunas
+		case 2:
+		//Percorre todas as colunas
 			for (int i = 0; i < colunas; ++i){
 				//Encontra a coluna
 				if(strcmp(tabela[0][i].valorCelula, nomeColuna)==0){ 
 					//Percorre todas as linhas
-					for (int j = 0; j < linhas; ++j){ 
+					for (int j = 1; j < linhas; ++j){ 
 						//Testa se valor informado é menor ou igual que o da tabela, se sim, imprime a linha
 						if (atof(valorPesquisa) <= atof(tabela[j][i].valorCelula)){ 
 							printLineTableBin(nomeTabela, j); //j = linha
@@ -60,31 +60,39 @@ void searchTable(char *nomeTabela, char *nomeColuna, int opcao, char *valorPesqu
 					}
 				}
 			}
-			;break;
+		;break;
 
-			case 3:
-			//Percorre todas as colunas
+		case 3:
+		//Percorre todas as colunas
+			
 			for (int i = 0; i < colunas; ++i){
 				//Encontra a coluna
 				if(strcmp(tabela[0][i].valorCelula, nomeColuna)==0){ 
 					//Percorre todas as linhas
-					for (int j = 0; j < linhas; ++j){ 
+					for (int j = 1; j < linhas; ++j){ 
 						//Testa se valor informado é menor ou igual que o da tabela, se sim, imprime a linha
 						if (strcmp(tabela[j][i].valorCelula, valorPesquisa)==0){ 
 							printLineTableBin(nomeTabela, j); //j = linha
-						}
+							naoExisteValor = 0; // Existe um valor igual
+						} 
+					}
+					
+					if (naoExisteValor)
+					{
+						printf("Não existe valor igual no campo %s.\n", tabela[0][i].valorCelula);
+							return;
 					}
 				}
 			}
-			;break;
+		;break;
 
-			case 4:
-			//Percorre todas as colunas
+		case 4:
+		//Percorre todas as colunas
 			for (int i = 0; i < colunas; ++i){
 				//Encontra a coluna
 				if(strcmp(tabela[0][i].valorCelula, nomeColuna)==0){ 
 					//Percorre todas as linhas
-					for (int j = 0; j < linhas; ++j){ 
+					for (int j = 1; j < linhas; ++j){ 
 						//Testa se valor informado é menor ou igual que o da tabela, se sim, imprime a linha
 						if (atof(valorPesquisa) > atof(tabela[j][i].valorCelula)){ 
 							printLineTableBin(nomeTabela, j); //j = linha
@@ -92,15 +100,15 @@ void searchTable(char *nomeTabela, char *nomeColuna, int opcao, char *valorPesqu
 					}
 				}
 			}
-			;break;
+		;break;
 
-			case 5:
-			//Percorre todas as colunas
+		case 5:
+		//Percorre todas as colunas
 			for (int i = 0; i < colunas; ++i){
 				//Encontra a coluna
 				if(strcmp(tabela[0][i].valorCelula, nomeColuna)==0){ 
 					//Percorre todas as linhas
-					for (int j = 0; j < linhas; ++j){ 
+					for (int j = 1; j < linhas; ++j){ 
 						//Testa se valor informado é menor ou igual que o da tabela, se sim, imprime a linha
 						if (atof(valorPesquisa) >= atof(tabela[j][i].valorCelula)){ 
 							printLineTableBin(nomeTabela, j); //j = linha
@@ -108,8 +116,24 @@ void searchTable(char *nomeTabela, char *nomeColuna, int opcao, char *valorPesqu
 					}
 				}
 			}
-			;break;
+		;break;
+/*		falta fazer
+		case 6: 
+
+			for (int i = 0; i < colunas; ++i){
+				//Encontra a coluna
+				if(strcmp(tabela[0][i].valorCelula, nomeColuna)==0){ 
+					//Percorre todas as linhas
+					for (int j = 1; j < linhas; ++j){ 
+					
+				}
+			}
+		;break;*/
+
+		default: 
+			printf("Opção inválida.\n");
 		}
+
 	}
 
 
@@ -117,7 +141,7 @@ void searchTable(char *nomeTabela, char *nomeColuna, int opcao, char *valorPesqu
 
 	//Lista tabelas
 		system("clear");
-		printf("Pesquisar na valores na tabela\n");
+		printf("Pesquisar valores na tabela\n");
 		selectTable();
 
 	//Seleciona a tabela
@@ -151,8 +175,15 @@ void searchTable(char *nomeTabela, char *nomeColuna, int opcao, char *valorPesqu
 			scanf("%s", valorPesquisa);
 		}
 	}
-	
+
+	// for (int j = 0; j < colunas; ++j){
+	// 		printf("%s %s\t", tabela[0][j].tipoCelula, tabela[0][j].valorCelula);
+	// 	}
+	// 	printf("\n");
+	system("clear");
+	printColumnsTableBin(nomeTabela);	
 	searchTable(nomeTabela, coluna, opcao, valorPesquisa);
+	printf("\n\n");
 
 
 }

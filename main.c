@@ -20,34 +20,31 @@ int main(int argc, char const *argv[])
 	char op[50];
 	char op1;
 	char nomeTabela[50];
-	panelSearchTable();
 	do{
 		panel();
 		printf("Digite uma opção: ");
 		scanf("%s", op);
 		if (strcmp(op, "createTable")==0 || strcmp(op, "1")==0){
 			createTable();
-		} else if(strcmp(op, "selectTable")==0 || strcmp(op, "3")==0){
+		} else if(strcmp(op, "selectTable")==0 || strcmp(op, "2")==0){
 			system("clear");
 			selectTable();
 			printf("Deseja inserir novos dados em alguma tabela?(s/n) ");
 			scanf(" %c", &op1); //Para não ter que inserir sempre ao ver as tabelas.
 			if (op1=='s'){
 				insertTable();
-			} else {
-
-			}
-		} else if(strcmp(op, "deleteTable")==0 || strcmp(op, "4")==0){
+			} 
+		} else if(strcmp(op, "deleteTable")==0 || strcmp(op, "3")==0){
 			deleteTable();
-		} else if(strcmp(op, "insertTable")==0 || strcmp(op, "5")==0){
+		} else if(strcmp(op, "insertTable")==0 || strcmp(op, "4")==0){
 			insertTable();
 		} else if(strcmp(op, "removeLine")==0 || strcmp(op, "6")==0){
 			removeLine();
-		} else if(strcmp(op, "help")==0 || strcmp(op, "7")==0){
+		} else if(strcmp(op, "help")==0 || strcmp(op, "9")==0){
 			help();
 		} else if(strcmp(op, "clear")==0 || strcmp(op, "8")==0){
 			system("clear");
-		} else if(strcmp(op, "showTables")==0 || strcmp(op, "9")==0){
+		} else if(strcmp(op, "showTables")==0 || strcmp(op, "5")==0){
 			system("clear");
 			selectTable();
 			printf("Nome da tabela para ser exibida: ");
@@ -56,11 +53,13 @@ int main(int argc, char const *argv[])
 			printf("Dados da tabela %s:\n\n", nomeTabela);
 			printTableBin(nomeTabela);
 			printf("\n\n\n");
-		}else {
+		}else if(strcmp(op, "searchTable")==0 || strcmp(op, "7")==0) {
+			panelSearchTable();
+		} else{
 			system("clear");
 			printf("Comando inválido.\n");
 		}
-	} while (!(strcmp(op, "sair")==0 || strcmp(op, "10")==0));
+	} while (!(strcmp(op, "quit")==0 || strcmp(op, "10")==0));
 	system("clear");
 	return 0;
 }
