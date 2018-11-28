@@ -2,7 +2,8 @@
 #define OPERAINSERTTABLE_H_INCLUDED
 
 typedef struct tcelula celula;
-	
+int onlyNumbers(char *s);
+int onlyRationalNumbers(char *s);
 /*Verifica se o valor informado é inteiro e se já existe na tabela.
 Caso exista, pede para o usuario informar o valor novamente até que
 seja válido para inserção.*/
@@ -17,6 +18,8 @@ char * verificaInt(char *valorCelulaString, celula **aux_tabela, int coluna);
 char * verificaFloat(char *valorCelulaString, celula **aux_tabela, int coluna);
 
 char * verificaDouble(char *valorCelulaString, celula **aux_tabela, int coluna);
+
+char * verificaChar(char *valorCelulaString, celula **aux_tabela, int coluna);
 
 void panelInsertTable(char *nomeTabela, celula **aux_colunas);
 

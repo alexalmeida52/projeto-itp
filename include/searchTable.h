@@ -11,6 +11,6 @@ int optionsSearchTable(char *nomeTabela, char *coluna);
 
 char * verificaTypeColumnSearch(char *nomeTabela, char * nomeColuna);
 
-int onlyNumbers(char *s);
+
 
 #endif // SEARCHTABLE_H_INCLUDED
