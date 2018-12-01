@@ -3,8 +3,8 @@
 O projeto-itp consiste em implementar um Sistema de Gerenciamento de Banco de Dados simplificado baseado no modelo relacional como requisito parcial para obtenção de nota na disciplina ITP/PTP, no Curso de Bacharelado em Tecnologia da Informação, na Universidade Federal do Rio Grande do Norte.
 
 Autores:
-Bruno Wagner
-José Alex
+	Bruno Wagner
+	José Alex
 
 As funcionalidades implementadas foram todas as solicitadas.
 	﻿1. Criar um tabela
@@ -23,16 +23,16 @@ O que faríamos de forma diferente
 Para compilar o código basta entrar no terminal e digitar os comandos
 
 Baixe o projeto usando o seguinte comando:
-git clone https://github.com/alexalmeida52/projeto-itp/
+	git clone https://github.com/alexalmeida52/projeto-itp/
 
 Entre no diretório do projeto:
-cd projeto-itp/
+	cd projeto-itp/
 
 Compile o código fonte e gere o executável:
-make all
+	make all
 
 Execute-o:
-make run
+	make run
 
 Usamos o github como ferramenta de versionamento e a contribuição de cada integrante está disponível no link abaixo
 https://github.com/alexalmeida52/projeto-itp/
